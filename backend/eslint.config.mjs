@@ -7,4 +7,10 @@ export default [
   {files: ["**/*.js"], languageOptions: {sourceType: "commonjs"}},
   {languageOptions: { globals: globals.node }},
   pluginJs.configs.recommended,
+  {
+    rules: {
+      "no-unused-vars": "warn",  // Change to 'warn'
+      "no-empty": "warn"         // Change to 'warn'
+    }
+  }
 ];
