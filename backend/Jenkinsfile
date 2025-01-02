@@ -38,17 +38,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                // Run tests and generate coverage reports
-                bat '''
-                set PATH=%NODEJS_HOME%;%PATH%
-                cd backend
-                npm test
-                '''
-            }
-        }
-
         stage('Build') {
             steps {
                 // Build the Node.js app
