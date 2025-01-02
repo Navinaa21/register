@@ -21,6 +21,7 @@ pipeline {
                 // Set the PATH and install dependencies using npm
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
+                cd backend
                 npm install
                 '''
             }
@@ -31,6 +32,7 @@ pipeline {
                 // Run linting to ensure code quality
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
+                cd backend
                 npm run lint
                 '''
             }
@@ -41,6 +43,7 @@ pipeline {
                 // Run tests and generate coverage reports
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
+                cd backend
                 npm test
                 '''
             }
@@ -51,6 +54,7 @@ pipeline {
                 // Build the Node.js app
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
+                cd backend
                 npm run build
                 '''
             }
@@ -64,6 +68,7 @@ pipeline {
                 // Ensure that sonar-scanner is in the PATH
                 bat '''
                 set PATH=%SONAR_SCANNER_PATH%;%PATH%
+                cd backend
                 where sonar-scanner || echo "SonarQube scanner not found. Please install it."
                 sonar-scanner -Dsonar.projectKey=register ^
                     -Dsonar.sources=. ^
