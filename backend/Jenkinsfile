@@ -38,17 +38,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Build the Node.js app
-                bat '''
-                set PATH=%NODEJS_HOME%;%PATH%
-                cd backend
-                npm run build
-                '''
-            }
-        }
-
         stage('SonarQube Analysis') {
             environment {
                 SONAR_TOKEN = credentials('sonar-token') // Accessing the SonarQube token stored in Jenkins credentials
